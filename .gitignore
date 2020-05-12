@@ -1,0 +1,7 @@
+.Python
+.installed.cfg
+*.egg
+*.csv
+*.db
+.DS_Store
+__pycache__/
