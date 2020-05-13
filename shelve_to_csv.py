@@ -8,7 +8,7 @@ first_row = ','.join(columns)
 output.write(first_row+'\n')
 
 for item in dbase:
-    text = map(lambda x: dbase[item].get(x), columns)
+    text = map(lambda x: dbase[item].get(x) if dbase[item].get(x) else '', columns)
     text = ','.join(text)+'\n'
     output.write(text)
     

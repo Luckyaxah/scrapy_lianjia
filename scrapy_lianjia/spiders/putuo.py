@@ -32,9 +32,20 @@ class PutuoSpider(scrapy.Spider):
         item['价格单位'] = response.xpath('//div[@class="content__aside--title"]/text()').getall()[1].replace('\n','').replace(' ','')
         item['价格'] = response.xpath('//div[@class="content__aside--title"]/span/text()').get()
         item['租赁方式'] = d['租赁方式：']
-        item['房屋类型'] = d['房屋类型：']
-        item['朝向楼层'] = d['朝向楼层：']
+        item['房屋类型'] = d['房屋类型：'].split()[0]
+        item['房屋面积'] = d['房屋类型：'].split()[1]
+        item['装修情况'] = d['房屋类型：'].split()[2] if len(d['房屋类型：'].split())>2 else None
+        item['朝向'] = d['朝向楼层：'].split()[0]
+        item['楼层'] = d['朝向楼层：'].split()[1]
         item['链接'] = response.url
         item['房屋标题'] = response.xpath('//title/text()').get()
-        item['房源维护时间'] = response.xpath('//div[@class="content__subtitle"]/text()').get().strip()
+        temp = response.xpath('//*[@class="content__article__info2"]/li[@class="fl oneline  "]/text()').getall()
+        temp = map(lambda x: x.replace('\n','').replace(' ',''), temp)
+        temp = filter(lambda x: x, list(temp))
+        item['配套设施_有'] = ';'.join(list(temp))
+        temp = response.xpath('//*[@class="content__article__info2"]/li[@class="fl oneline facility_no "]/text()').getall() 
+        temp = map(lambda x: x.replace('\n','').replace(' ',''), list(temp))
+        temp = filter(lambda x: x, list(temp))
+        item['配套设施_无'] = ';'.join(list(temp))
+        item['房源维护时间'] = response.xpath('//div[@class="content__subtitle"]/text()').get().strip().split('：')[1]
         yield item
