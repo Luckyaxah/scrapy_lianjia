@@ -14,7 +14,7 @@ class Line7Spider(scrapy.Spider):
             'https://sh.lianjia.com/ditiezufang/li110460726s100021957/l0l1brp4000erp5000rs普陀/',
             'https://sh.lianjia.com/ditiezufang/li110460726s100021956/l0l1brp4000erp5000rs普陀/',
             'https://sh.lianjia.com/ditiezufang/li110460726s100021958/l0l1brp4000erp5000rs普陀/',
-            # 'https://sh.lianjia.com/ditiezufang/li110460726s100021959/l0l1brp4000erp5000rs普陀/',
+            'https://sh.lianjia.com/ditiezufang/li110460726s100021959/l0l1brp4000erp5000rs普陀/',
             'https://sh.lianjia.com/ditiezufang/li143685059s100021874/l0l1brp4000erp5000rs普陀/',
             'https://sh.lianjia.com/ditiezufang/li143685059s100021873/l0l1brp4000erp5000rs普陀/',
             'https://sh.lianjia.com/ditiezufang/li143685059s100021873/pg2l0l1brp4000erp5000rs普陀/'
